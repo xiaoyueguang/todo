@@ -15,13 +15,11 @@
 					<input type="hidden" v-model='item.todoid'>
 					<input type="checkbox" v-on:click="status($index)" v-model='item.status'>
 					<span>{{item.content}}</span>
-					<!-- 获取INDEX -->
 					<a v-on:click="remove($index)">+</a>
 				</li>
 			</template>
 		</ul>
 	</div>
-	<span v-on:click="getall">获取所有数据</span>
 </template>
 
 <style src="./todo.css">
@@ -60,8 +58,12 @@
 				this.todo = "";
 			},
 			status: function(index){
-				this.items[index].status = !this.items[index].status;
-				console.log(this);;
+				// this.items[index].status = !this.items[index].status;
+				// this.$set(this.items[index].status);
+				// this.$nextTick(function(){
+				// 	console.log(1)
+				// })
+				console.log(this.items[index].status);;
 			},
 			all:function(){
 				this.filter = {
@@ -93,7 +95,6 @@
 		},
 		watch: {
 			items: function(value){
-				console.log(value[0].status)
 				localStorage.todo = JSON.stringify(value);
 			}
 		},
